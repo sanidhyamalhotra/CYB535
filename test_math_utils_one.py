@@ -2,7 +2,7 @@ import pytest
 from math_utils import MathUtils
 
 @pytest.mark.parametrize("a, b, expected", [
-    (1, 2, 3),
+    (2, 2, 4),
     (-1, 1, 0),
     (0, 0, 0),
     (100, 200, 300)
