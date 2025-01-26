@@ -1,3 +1,4 @@
+package classwork;
 import java.util.Scanner;
 
 public class addTwoNumber {
