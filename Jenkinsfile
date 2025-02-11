@@ -60,6 +60,10 @@ pipeline {
     post {
         always {
             cleanWs()  // Clean up workspace after build
+            emailext subject: "Build ${currentBuild.currentResult}: ${env.JOB_NAME}",
+                 body: "Build ${currentBuild.currentResult}\nCheck console output at ${env.BUILD_URL}",
+                 to: "sanidhyamalhotrapvt@gmail.com",
+                 from: "jenkins@example.com"
         }
         success {
             echo "SonarQube analysis completed successfully."
