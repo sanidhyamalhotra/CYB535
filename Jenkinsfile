@@ -49,6 +49,12 @@ pipeline {
                 }
             }
         }
+
+        stage('Archive Artifact') {  // Added: Storing generated JAR files
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
     }
 
     post {
