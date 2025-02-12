@@ -55,15 +55,19 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
+        
+        stage('Notification') {
+            steps {
+                mail to: 'tigertharu21@gmail.com',
+                     subject: "Build ${currentBuild.result}: Job ${env.JOB_NAME}",
+                     body: "Build ${env.BUILD_NUMBER} completed.\nCheck details: ${env.BUILD_URL}"
+            }
+        }
     }
 
     post {
         always {
             cleanWs()  // Clean up workspace after build
-            emailext subject: "Build ${currentBuild.currentResult}: ${env.JOB_NAME}",
-                 body: "Build ${currentBuild.currentResult}\nCheck console output at ${env.BUILD_URL}",
-                 to: "sanidhyamalhotrapvt@gmail.com",
-                 from: "jenkins@example.com"
         }
         success {
             echo "SonarQube analysis completed successfully."
