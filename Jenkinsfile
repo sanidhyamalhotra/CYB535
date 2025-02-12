@@ -62,9 +62,9 @@ pipeline {
                      subject: "Build ${currentBuild.result}: Job ${env.JOB_NAME}",
                      body: "Build ${env.BUILD_NUMBER} completed.\nCheck details: ${env.BUILD_URL}"
             }
-        }
+        }
     }
-
+    
     post {
         always {
             cleanWs()  // Clean up workspace after build
