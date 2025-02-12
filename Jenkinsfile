@@ -61,7 +61,7 @@ pipeline {
                 mail to: 'tigertharu21@gmail.com',
                      subject: "Build ${currentBuild.result}: Job ${env.JOB_NAME}",
                      body: "Build ${env.BUILD_NUMBER} completed.\nCheck details: ${env.BUILD_URL}"
-            }
+            }
         }
     }
 
