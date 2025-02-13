@@ -28,13 +28,13 @@ pipeline {
             }
         }
 
-        stage('Test & Code Coverage') {  // Added: Running tests and generating code coverage report
+        stage('Test') { 
             steps {
-                bat 'mvn test jacoco:report'  
+                bat 'mvn test  
             }
             post {
                 success {
-                    echo 'All test cases passed with coverage report generated'
+                    echo 'All test cases passed'
                 }
                 failure {
                     echo 'Some test cases failed'
@@ -46,6 +46,17 @@ pipeline {
             steps {
                 script {
                     bat 'mvn sonar:sonar -Dsonar.token=%SONAR_TOKEN%'
+                }
+            }
+        }
+
+        stage('Code Coverage') {
+            steps {
+                bat 'mvn clean verify'
+            }
+            post {
+                always {
+                    jacoco execPattern: 'target/jacoco.exec'
                 }
             }
         }
