@@ -30,7 +30,7 @@ pipeline {
 
         stage('Test & Code Coverage') {  // Added: Running tests and generating code coverage report
             steps {
-                bat 'mvn test jacoco:report'  
+                bat 'mvn clean test verify jacoco:report'  
             }
             post {
                 success {
