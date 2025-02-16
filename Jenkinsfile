@@ -45,7 +45,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    bat 'mvn sonar:sonar -Dsonar.token=%SONAR_TOKEN%'
+                    bat 'mvn sonar:sonar -Dsonar.token=%SONAR_TOKEN% -Dsonar.coverage.jacoco.xmlReportPaths=target/jacoco-report/jacoco.xml'
                 }
             }
         }
