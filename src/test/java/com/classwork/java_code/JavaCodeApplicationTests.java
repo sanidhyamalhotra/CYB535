@@ -1,5 +1,6 @@
 package com.classwork.java_code;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,6 +14,6 @@ class JavaCodeApplicationTests {
 	@Test
     void mainMethodTest() {
         // This test can ensure the main method runs as expected by invoking it.
-        JavaCodeApplication.main(new String[]{});
-    }
+	        Assertions.assertDoesNotThrow(() -> JavaCodeApplication.main(new String[]{}));
+	}
 }
