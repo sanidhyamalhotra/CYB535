@@ -74,6 +74,9 @@ pipeline {
         }
         failure {
             echo "SonarQube analysis failed."
+            mail to: 'csecec.1702842@gmail.com',
+            subject: "FAILURE: Job ${env.JOB_NAME} Build #${env.BUILD_NUMBER}",
+            body: "Build ${env.BUILD_NUMBER} has failed.\nCheck details: ${env.BUILD_URL}"
         }
     }
 }
