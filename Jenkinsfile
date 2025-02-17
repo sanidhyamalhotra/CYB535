@@ -33,10 +33,6 @@ pipeline {
                 bat 'mvn clean test verify jacoco:report'  
             }
             post {
-                always {
-                    junit '**/target/surefire-reports/*.xml' // Capture JUnit reports
-                    jacoco execPattern: 'target/jacoco.exec'
-                }
                 success {
                     echo 'All test cases passed with coverage report generated'
                 }
@@ -49,7 +45,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    bat 'mvn sonar:sonar -Dsonar.token=%SONAR_TOKEN% -Dsonar.coverage.jacoco.xmlReportPaths=target/jacoco-report/jacoco.xml'
+                    bat 'mvn sonar:sonar -Dsonar.token=%SONAR_TOKEN%'
                 }
             }
         }
