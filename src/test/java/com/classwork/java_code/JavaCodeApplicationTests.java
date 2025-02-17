@@ -10,4 +10,9 @@ class JavaCodeApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+    void mainMethodTest() {
+        // This test can ensure the main method runs as expected by invoking it.
+        JavaCodeApplication.main(new String[]{});
+    }
 }
